@@ -1,0 +1,22 @@
+body {
+  padding: 50px;
+  font: 14px 'Lucida Grande', Helvetica, Arial, sans-serif;
+}
+header {
+  background-color: #000000;
+  color: #2a5bfd;
+  padding: 16px;
+  text-align: center;
+}
+footer {
+  background-color: #000000;
+  color: #2a5bfd;
+  padding: 16px;
+  text-align: center;
+}
+.content {
+  padding: 16px;
+}
+tr.null_reviews {
+  background-color: #ff0000;
+}

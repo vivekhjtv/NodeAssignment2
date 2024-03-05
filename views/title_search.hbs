@@ -1,0 +1,13 @@
+    <h1>Assignment 2 / Vivek</h1>
+    <h2>Search results of "{{searchTitle}}"</h2>
+    <h1>Books Information</h1>
+    <h3>No of Result Found : {{jsonResult.length}}</h3>
+    {{#each jsonResult}}
+      <div>
+        <p><b>Title: </b>{{title}}</p>
+        <p><b>Author: </b>{{author}}</p>
+        <p><b>Price: </b> ${{price}}</p>
+        <p><b>Publisher: </b> {{publisher}}</p>
+      </div>
+    {{/each}}
+
