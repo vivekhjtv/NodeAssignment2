@@ -14,6 +14,7 @@ app.engine(
   exphbs.engine({
     extname: '.hbs',
     helpers: {
+      //  helper method to check if average review is empty or not.
       is_avg_reviewEmpty: function (avg_reviews) {
         return avg_reviews !== null &&
           avg_reviews !== undefined &&
@@ -37,13 +38,13 @@ app.get('/users', function (req, res) {
 
 // Route -> '/data' from Assignment 1
 app.get('/data', (req, res) => {
-  const filePath = path.join(__dirname, 'datasetA.json');
+  const filePath = path.join(__dirname, 'datasetA.json'); // Path of datasetA.json in our project folder
   fs.readFile(filePath, 'utf8', (err, data) => {
     if (err) {
-      console.error(err);
       res.send('Error reading JSON file');
     } else {
       const parsedData = JSON.parse(data);
+      // Render 'data' view and pass data object to it.
       res.render('data', {
         data: parsedData,
         message: 'JSON data is loaded and ready!',
@@ -75,8 +76,10 @@ app.get('/data/isbn/:index', (req, res) => {
 //Handle both GET and POST requests for ISBN search
 app.all('/data/search/isbn/', (req, res) => {
   if (req.method === 'GET') {
+    //use GET method to display form
     res.render('isbn_form_search');
   } else if (req.method === 'POST') {
+    //use POST method
     const searchISBN = req.body.isbn;
     console.log(searchISBN);
     const filePath = path.join(__dirname, 'datasetA.json');
@@ -145,12 +148,12 @@ app.all('/data/search/title/', (req, res) => {
     res.status(405).send('Method Not Allowed');
   }
 });
-
+// GET requests for get the allDate
 app.get('/allData', (req, res) => {
   fs.readFile('datasetA.json', 'utf8', (err, data) => {
     if (!err) {
       const jsonResult = JSON.parse(data);
-      res.render('allData', { data: jsonResult });
+      res.render('allData', { data: jsonResult }); // Render 'allData' view and pass data object to it.
     } else {
       res.status(500).send('Error reading JSON file');
     }
